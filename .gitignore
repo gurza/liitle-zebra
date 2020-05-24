@@ -1,0 +1,4 @@
+.ve
+*.py[co]
+
+.idea
