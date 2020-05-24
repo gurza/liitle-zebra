@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 import os
 
-import telebot
+from aiogram import Bot, Dispatcher, executor, types
 
 token = os.getenv("ZEBRA_TOKEN", "")
-bot = telebot.TeleBot(token)
+bot = Bot(token)
+dp = Dispatcher(bot)
 
 
-@bot.message_handler(commands=["start"])
-def start(message: telebot.types.Message):
+@dp.message_handler(commands=['start', 'help'])
+async def start(message: types.Message):
     start_message = "I am Zebra, barcode scanner. Send me image with barcode."
-    bot.send_message(message.chat.id, start_message)
+    await message.answer(start_message)
 
 
 if __name__ == "__main__":
-    bot.polling()
+    executor.start_polling(dp, skip_updates=True)
