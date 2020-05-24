@@ -8,7 +8,7 @@ bot = Bot(token)
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=['start', 'help'])
+@dp.message_handler(commands=["start", "help"])
 async def start(message: types.Message):
     start_message = "I am Zebra, barcode scanner. Send me image with barcode."
     await message.answer(start_message)
