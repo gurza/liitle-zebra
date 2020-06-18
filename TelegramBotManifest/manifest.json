@@ -1,0 +1,8 @@
+{
+  "username": "little_zebra_bot",
+  "name": "Little Zebra",
+  "description": "This is a simple barcode scanner designed to demonstrate that in today's world you don't need special devices to decode a barcode.",
+  "about": "I am Little Zebra, barcode scanner. Send me image with barcode to decode it.",
+  "userpic": "logo.jpg",
+  "commands": []
+}
