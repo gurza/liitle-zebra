@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import os
 import io
-from PIL import Image
+import datetime
+import logging
 
 from aiogram import Bot, Dispatcher, executor, types
+from PIL import Image
 import pyzbar.pyzbar as pyzbar
 
+logging.basicConfig(level=logging.INFO)
 token = os.getenv('ZEBRA_TOKEN', '')
 bot = Bot(token)
 dp = Dispatcher(bot)
@@ -29,8 +32,11 @@ async def scan(message: types.Message):
             "{data} ({type})".format(data=obj.data.decode("utf-8"), type=obj.type)
             for obj in decoded_objects
         ])
+    logging.info('{now} @{user}: {result}'.format(
+        now=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user=message.chat.username, result=result_message))
     await message.reply(result_message)
 
 
 if __name__ == '__main__':
+    logging.info('little-zebra - {ver}'.format(ver="1.0.0"))
     executor.start_polling(dp, skip_updates=True)
