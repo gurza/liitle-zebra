@@ -16,8 +16,9 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start', 'help'])
 async def start(message: types.Message):
-    start_message = 'I am Zebra, barcode scanner. Send me image with barcode.'
-    await message.answer(start_message)
+    start_message = 'I am Little Zebra, barcode scanner. Send me image with barcode to decode it.\n' \
+                    '[Github](https://github.com/gurza/little-zebra)'
+    await message.answer(start_message, parse_mode='Markdown')
 
 
 @dp.message_handler(content_types=[types.ContentType.PHOTO])
