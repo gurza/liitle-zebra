@@ -1,4 +1,9 @@
-.ve
-*.py[co]
+# General things to ignore
+*.py[cod]
 
-.idea
+# Development environment
+.idea/
+.ve/
+
+# Other
+.DS_Store
